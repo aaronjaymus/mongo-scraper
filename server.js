@@ -32,7 +32,7 @@ db.once("open", function(){
 });
 
 require("./routes/htmlRoutes.js")(app);
-//require("./routes/apiRoutes.js")(app);
+require("./routes/apiRoutes.js")(app);
 
 app.listen(PORT, function(){
 	console.log("App listening on PORT: "+PORT);
