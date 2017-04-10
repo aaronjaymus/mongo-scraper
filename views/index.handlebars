@@ -1,0 +1,29 @@
+<section class="main jumbotron container">
+	<h1>Buffalo Bills SubReddit</h1>
+	
+	<h2>Get your Buffalo Bills Subreddit Action Here</h2>
+
+	<ul class="nav nav-tabs center">
+		<li role="presentation" id="new-tab"{{#if new}}class="active"{{/if}}>
+			<a href="/new">New</a>
+		</li>
+		<li role="presentation" id="saved-tab"{{#if saved}}class="active"{{/if}}>
+			<a href="/saved">Saved</a>
+		</li>
+	</ul>
+</section>
+<section class="container">
+	{{#if new}}
+	<div>
+		{{#each Articles}}
+		{{> new-articles}}
+		{{/each}}
+	</div>
+	{{else}}
+	<div>
+		{{#each Articles}}
+		{{> saved-articles}}
+		{{/each}}
+	</div>
+	{{/if}}
+</section>	

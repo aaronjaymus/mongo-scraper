@@ -1,0 +1,38 @@
+{
+  "name": "mongo-scraper",
+  "version": "0.1.0",
+  "description": "Scraping websites for articles and saving them to a Mongo Database. Will use Cheerio and Mongoose.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronjaymus/mongo-scraper.git"
+  },
+  "keywords": [
+    "express",
+    "scraping",
+    "mongo",
+    "mongoose",
+    "node",
+    "cheerio",
+    "buffalo",
+    "bills",
+    "reddit"
+  ],
+  "author": "A. James McHale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronjaymus/mongo-scraper/issues"
+  },
+  "homepage": "https://github.com/aaronjaymus/mongo-scraper#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.9.3",
+    "request": "^2.81.0"
+  }
+}
