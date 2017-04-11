@@ -10,12 +10,23 @@ module.exports = function (app){
 
 	app.post("/articles", function(req, res){
 		var newArticle = new Article(req.body);
-
+		console.log(newArticle);
 		newArticle.save(function(err, doc){
 			if(err){
 				console.log(err);
 			}else{
-				console.log(doc);
+				//console.log(doc);
+			}
+		});
+	});
+
+	app.post("/articles/delete/:id", function(req, res){
+		Article.find({"_id": req.params.id}).remove().exec(function(err, data){
+			if(err){
+				console.log(err);
+			}else{
+				console.log("success?");
+				res.redirect("/saved");
 			}
 		});
 	});
