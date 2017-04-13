@@ -19,9 +19,13 @@ app.use(bodyParser.urlencoded({
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-app.use(express.static("public"));
-//Connect to mongoose db
-mongoose.connect("mongodb://heroku_hmskrc3c:c1hkamrnrjbqv7hj99t93ocbb8@ds157390.mlab.com:57390/heroku_hmskrc3c");
+app.use(express.static("./public"));
+
+//Connect to mongoose db local
+mongoose.connect("mongodb://localhost/billsReddit");
+//connect to mongoose db on heroku
+//mongoose.connect("mongodb://heroku_hmskrc3c:c1hkamrnrjbqv7hj99t93ocbb8@ds157390.mlab.com:57390/heroku_hmskrc3c");
+
 var db = mongoose.connection;
 
 db.on("error", function(error){

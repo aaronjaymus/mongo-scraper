@@ -26,7 +26,7 @@ module.exports = function(app){
 					saved: true,
 					Articles: doc
 				};
-				res.render("Index", hbsObject);
+				res.render("index", hbsObject);
 			}
 		});
 	});
@@ -52,7 +52,7 @@ module.exports = function(app){
 				new: true,
 				Articles: result
 			}
-			res.render("Index", hbsObject);
+			res.render("index", hbsObject);
 		});
 	});
 
