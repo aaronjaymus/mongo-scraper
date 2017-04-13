@@ -1,7 +1,7 @@
 <div class="row">
 	<p class="col-md-9"><a href="{{this.url}}">{{this.title}}</a></p>
 	<div class="col-md-3">
-		<button type="button" class="btn btn-info note-button float-right" data-id="{{this._id}}">Note</button>
-		<button type="button" class="btn btn-warning delete-button float-right" data-id="{{this._id}}" >X</button>
+		<button type="button" class="btn btn-info open-notes-button float-right" data-id="{{this._id}}" data-toggle="modal" data-target="#notes-modal">Notes</button>
+		<button type="button" class="btn btn-danger delete-article-button float-right" data-id="{{this._id}}" >X</button>
 	</div>
 </div>

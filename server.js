@@ -1,3 +1,4 @@
+//Include dependencies for application
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
@@ -10,7 +11,7 @@ mongoose.Promise = Promise;
 
 var app = express();
 var PORT = process.env.PORT || 8000;
-
+//Middleware bodyparser
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -19,7 +20,7 @@ app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
-
+//Connect to mongoose db
 mongoose.connect("mongodb://localhost/billsReddit");
 var db = mongoose.connection;
 
@@ -30,7 +31,7 @@ db.on("error", function(error){
 db.once("open", function(){
 	console.log("Mongoose connection successful");
 });
-
+//require routes for the application
 require("./routes/htmlRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
 

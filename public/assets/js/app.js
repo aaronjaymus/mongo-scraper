@@ -19,9 +19,9 @@ var mongoScraper = {
 		});
 	},
 	//delete and article from the saved db
-	deleteButton: function(button){
+	deleteArticleButton: function(button){
 		var id = $(button).data("id");
-		var url = "/articles/delete/" + id;
+		var url = "/articles/delete/" +id;
 		console.log("deleteButton id " +url);
 
 		$.ajax({
@@ -31,7 +31,50 @@ var mongoScraper = {
 			//console.log(data);
 			$(button).closest(".row").remove();
 		});
-	}	
+	},
+
+	openNotesButton: function(button){
+		var id = $(button).data("id");
+		var url = "/articles/notes/" + id;
+		console.log(url);
+		$.ajax({
+			method: "GET",
+			url: url
+		}).done(function(data){
+			console.log(data.notes);
+			$("#save-note-button").data("id", id);
+			//send JSON data to Modal
+			for(var i=0; i<data.notes.length; i++){
+				
+				var noteDiv = $("<div>");
+				noteDiv.html("<p>Title: "+data.notes[i].title+"</p>"+
+					"<p>Body: "+data.notes[i].body+"</p>");
+				var noteButton = $("<button>");
+				noteButton.data("id", id).addClass("button btn-primary float-right");
+				noteDiv.append(noteButton);
+				$("#notes-view").append(noteDiv);
+			}
+		});
+	},
+
+	saveNotesButton: function(button){
+		console.log(button);
+		var id = $(button).data("id");
+		var url = "/notes/"+id;
+		console.log("saveNoteButton id: "+id);
+		console.log("saveNoteButton url: "+url);
+
+		$.ajax({
+			method: "POST",
+			url: url
+		}).done(function(data){
+			console.log(data);
+		});
+	},
+
+	deleteNoteButton: function(button){
+
+	}
 };
 
 
@@ -39,10 +82,19 @@ $(".save-button").on("click", function(){
 	mongoScraper.saveButton(this);
 });
 
-$(".delete-button").on("click", function(){
-	mongoScraper.deleteButton(this);
-})
+$(".delete-article-button").on("click", function(){
+	mongoScraper.deleteArticleButton(this);
+});
 
+$(".open-notes-button").on("click", function(){
+	mongoScraper.openNotesButton(this);
+});
+
+$("#save-note-button").on("click", function(){
+	mongoScraper.saveNotesButton(this);
+});
+
+//these changes the active tab to New or Saved based on clicks. Happens before handlebars is rendered, handlebars does the same thing.
 $("#new-tab").on("click", function(){
 	$("#saved-tab").removeClass("active");
 	$("#new-tab").addClass("active");

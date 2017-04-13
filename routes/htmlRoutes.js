@@ -21,7 +21,7 @@ module.exports = function(app){
 			if(error){
 				console.log(error);
 			}else{
-				console.log(doc);
+				//console.log(doc);
 				hbsObject = {
 					saved: true,
 					Articles: doc

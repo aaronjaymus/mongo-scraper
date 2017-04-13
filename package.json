@@ -33,6 +33,7 @@
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.9.3",
+    "mongoose-unique-validator": "^1.0.5",
     "request": "^2.81.0"
   }
 }
