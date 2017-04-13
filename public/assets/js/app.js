@@ -61,12 +61,16 @@ var mongoScraper = {
 		console.log(button);
 		var id = $(button).data("id");
 		var url = "/notes/"+id;
-		console.log("saveNoteButton id: "+id);
-		console.log("saveNoteButton url: "+url);
-
+		var title = $("#note-title").val();
+		var body = $("#note-body").val();
+		
 		$.ajax({
 			method: "POST",
-			url: url
+			url: url,
+			data: {
+				title: title,
+				body: body
+			}
 		}).done(function(data){
 			console.log(data);
 		});
@@ -91,6 +95,7 @@ $(".open-notes-button").on("click", function(){
 });
 
 $("#save-note-button").on("click", function(){
+	console.log(this);
 	mongoScraper.saveNotesButton(this);
 });
 

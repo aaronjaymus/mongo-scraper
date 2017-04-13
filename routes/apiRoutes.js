@@ -36,7 +36,9 @@ module.exports = function (app){
 
 		var newNote = new Note(req.body);
 		var id = req.params.id;
+
 		//console.log("app.post 'notes/:id : " + id);
+		console.log("app.post newNote "+newNote);
 		newNote.save(function(error, doc){
 			if(error) {
 				console.log(error);
